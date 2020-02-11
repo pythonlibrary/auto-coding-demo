@@ -1,0 +1,25 @@
+{
+    "service_31": [
+        { 
+          "id": "0xFF00",
+          "start_fun": "Erase_Flash_Start",
+          "stop_fun": "NULL",
+          "result_fun": "NULL",
+          "access_level": "0x01"
+        },
+        { 
+          "id": "0xDF00",
+          "start_fun": "Check_CRC_Start",
+          "stop_fun": "NULL",
+          "result_fun": "Get_CRC_Result",
+          "access_level": "0x00"
+        },
+        { 
+          "id": "0xFF01",
+          "start_fun": "Check_Dependencies_Start",
+          "stop_fun": "Check_Dependencies_Stop",
+          "result_fun": "NULL",
+          "access_level": "0x01"
+        }
+    ]
+}

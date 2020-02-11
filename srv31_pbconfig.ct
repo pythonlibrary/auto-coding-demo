@@ -1,0 +1,61 @@
+#include "uds.h"
+
+{% for item in services %}
+{% if item.start_fun != "NULL" %}
+static uint8_t {{ item.start_fun }}(void);
+{% endif %}
+{% if item.stop_fun != "NULL" %}
+static uint8_t {{ item.stop_fun }}(void);
+{% endif %}
+{% if item.result_fun != "NULL" %}
+static uint8_t {{ item.result_fun }}(void);
+{% endif %}
+{% endfor %}
+
+
+
+const UDS_Routine_Ctrl_T UDS_RountineControl_Services[] =
+{
+    {% for item in services %}
+    { {{ item.id }},         (UDS_Routine_Ctrl_Func_T){{ item.start_fun }},         (UDS_Routine_Ctrl_Func_T){{ item.stop_fun }},   (UDS_Routine_Ctrl_Func_T){{ item.result_fun }},   {{ item.access_level }}},
+    {% endfor %}
+};
+
+/*!
+ * The size of the rountine control table, it will be updated automatically, no need to change this.
+ */
+const uint16_t UDS_RountineControl_Services_Size = sizeof(UDS_RountineControl_Services)/sizeof(UDS_Routine_Ctrl_T);
+
+
+{% for item in services %}
+{% if item.start_fun != "NULL" %}
+static uint8_t {{ item.start_fun }}(void)
+{
+    uint8_t status;
+    /*!!!!! User need to complete this function */
+
+    return status;
+}
+{% endif %}
+
+{% if item.stop_fun != "NULL" %}
+static uint8_t {{ item.stop_fun }}(void)
+{
+    uint8_t status;
+    /*!!!!! User need to complete this function */
+
+    return status;
+}
+{% endif %}
+
+{% if item.result_fun != "NULL" %}
+static uint8_t {{ item.result_fun }}(void)
+{
+    uint8_t status;
+    /*!!!!! User need to complete this function */
+
+    return status;
+}
+{% endif %}
+
+{% endfor %}
